@@ -39,14 +39,32 @@ client.on("auth_failure", (msg) => {
 
 
 // Quando recebe uma mensagem
+// client.on("message", async (message) => {
+//     console.log(`Mensagem recebida de ${message.from}: ${message.body}`);
+    
+//     try {
+//         await saveMessage(message.from, message.body);
+    
+//     } catch (err) {
+//         console.error("Erro ao salvar mensagem:", err);
+//     }
+// });
+
 client.on("message", async (message) => {
     console.log(`Mensagem recebida de ${message.from}: ${message.body}`);
-    
+
     try {
+        // Salva a mensagem no banco de dados
         await saveMessage(message.from, message.body);
-    
+
+        // 🧠 Resposta automática "#ping" → "pong!"
+        if (message.body.trim().toLowerCase() === "#ping") {
+            await message.reply("pong!");
+            console.log("Resposta automática enviada: pong!");
+        }
+
     } catch (err) {
-        console.error("Erro ao salvar mensagem:", err);
+        console.error("Erro ao salvar ou responder mensagem:", err);
     }
 });
 
