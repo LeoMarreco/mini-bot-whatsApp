@@ -1,0 +1,25 @@
+venv
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Ambiente virtual
+venv/
+
+# Banco local e arquivos temporários
+*.db
+*.sqlite3
+
+# Credenciais e variáveis de ambiente
+.env
+
+# Sessões e cache do WhatsApp
+.wwebjs_auth/
+.wwebjs_cache/
